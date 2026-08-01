@@ -25,7 +25,7 @@ The following planning process and pseudocode template were used to break the pr
 
 ### User Stories
 
-A user story is a simple description of a feature told from the perspective of the person who desires the new capability; in our case, this will be a user of our game.
+A user story is a short, plain language statement of something a player should be able to do in the game, written from the player's own perspective.
 
 Let's look at the user stories written for our 2048 game:
 
@@ -40,7 +40,7 @@ Let's look at the user stories written for our 2048 game:
 
 ### Pseudocode
 
-Pseudocode is a way of writing out the steps of our game or program in plain English. It is a great way to plan out the logic of our game before we start writing any code.
+Pseudocode is a plain English, step-by-step sketch of the program's logic, written before touching actual code.
 
 Here is the 2048 game pseudo-code: 
 
