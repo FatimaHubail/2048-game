@@ -1,8 +1,9 @@
 # 2048 Game
-
-<img src="./assets/play.png" alt="2048 gameplay" width="300" height="300">
-<img src="./assets/win.png" alt="2048 win" width="200" height="300">
-<img src="./assets/gameover.jpg" alt="2048 win" width="200" height="300">
+<p>
+    <img src="./assets/play.png" alt="2048 gameplay" width="300" height="300">
+    <img src="./assets/win.png" alt="2048 win" width="200" height="300">
+    <img src="./assets/gameover.jpg" alt="2048 win" width="200" height="300">
+</p>
 
 **2048** is a single-player sliding tile puzzle game built with **HTML, CSS, and vanilla JavaScript**. Players use the arrow keys to slide numbered tiles across a 4x4 grid. When two tiles with the same number collide, they merge into one tile with double the value. The goal is to keep merging tiles until you create a tile with the number **2048**.
 
