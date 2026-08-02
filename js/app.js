@@ -8,6 +8,7 @@ let currentScore;
 let bestScore;
 let gameOver;
 let hasWon;
+let cellElements;
 
 /*----- Cached Element References  -----*/
 const boardEl = document.querySelector('#board');
@@ -49,7 +50,39 @@ const init = () => {
     randomTile();
     randomTile(); 
     // generate 2 random cells
+}
+
+const buildBoardCells = () => { // function to build the cells of the boards (16 cells) and store their references
+    cellElements = [];
+    for (let row = 0; row < BOARD_SIZE; row++){
+        let rowEls = [];
+        for (let col = 0; col < BOARD_SIZE; col++){
+            const cellDiv = document.createElement('div');
+            cellDiv.classList.add('cell');
+            boardEl.appendChild(cellDiv);
+        }
+        cellElements.push(rowEls);
     }
+}
+
+const render = () => { // updates cells with new values alongside their references
+    for (let row = 0; row < BOARD_SIZE; row++){
+        for (let col = 0; col < BOARD_SIZE; col++){
+            const value = board[row][col];
+            const cellDiv = cellElements[row][col];
+
+            if (value === null) {
+                cellDiv.textContent = '';
+                cellDiv.classList.add('hide');
+            } else {
+                cellDiv.textContent = value;
+                cellDiv.classList.remove('hide');
+            }
+        }
+    }
+    scoreEl.textContent = currentScore;
+    bestScoreEl.textContent = bestScore;
+}
 
 
 /*----------- Event Listeners ----------*/
