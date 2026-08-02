@@ -1,7 +1,7 @@
 # 2048 Game
 <p>
     <img src="./assets/play.png" alt="2048 gameplay" width="300" height="300">
-    <img src="./assets/win.png" alt="2048 win" width="200" height="300">
+    <img src="./assets/win.png" alt="2048 win" width="200" height="400">
     <img src="./assets/gameover.jpg" alt="2048 win" width="200" height="300">
 </p>
 
