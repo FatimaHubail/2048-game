@@ -107,7 +107,19 @@ const slideMerge = (line) => {
     return merged;
 }
 
+const moveLeft = () => {
+    let leftMerge;
+    board.forEach((row, rowIdx) => {
+        leftMerge = slideMerge(row);
+        board[rowIdx] = leftMerge;
+    })
+}
+
 
 /*----------- Event Listeners ----------*/
-const keyDown = document.addEventListener('keydown', handleKeyDown);
-const btnClick = newGameBtnEl.addEventListener('click', handleNewGame);
+// const keyDown = document.addEventListener('keydown', handleKeyDown);
+// const btnClick = newGameBtnEl.addEventListener('click', handleNewGame);
+
+// buildBoardCells();
+// init();     
+// render();
