@@ -92,7 +92,11 @@ const slideMerge = (line) => {
     let merged = [];
     for (let i = 0; i < filteredFromNull.length; i++) {
         if (i < filteredFromNull.length -1 && filteredFromNull[i] === filteredFromNull[i + 1]) {
-            merged.push(filteredFromNull[i] * 2);
+            const newValue = merged.push(filteredFromNull[i] * 2);
+            currentScore += newValue;
+            if (currentScore > bestScore) {
+                bestScore = currentScore;
+            }
             i++; // skip the next value since it was just consumed by the merge
             // merges and doubles value of identical adjacents  
         } else {
@@ -107,24 +111,47 @@ const slideMerge = (line) => {
     return merged;
 }
 
-const moveLeftUp = () => {
-    let merged;
-    board.forEach((row, rowIdx) => {
-        merged = slideMerge(row);
-        board[rowIdx] = merged;
-    })
-}
+const handleDirectionMove = (line, needsReverse) => {
+    if (needsReverse) {
+        const reversed = line.toReversed();
+        const merged = slideMerge(reversed);
+        return merged.reverse();
+    }
+    
+    return slideMerge(line);
+};
 
-const moveRightDown = () => {
-    let merged;
-    let reversed;
-    board.forEach((row, rowIdx) => {
-        reversed = row.toReversed();
-        merged = slideMerge(reversed);
-        board[rowIdx] = merged.reverse();
-    })
-}
+const handleKeyDown = (event) => {
+    event.preventDefault();
+    
+    if (event.key === "ArrowUp") {
+        for (let col = 0; col < BOARD_SIZE; col++){
+            let column = board.map(row => row[col]);
+            column = handleDirectionMove(column, false);
 
+            for (let row = 0; row < BOARD_SIZE; row++){
+                board[row][col] = column[row];
+            }
+        }
+    } else if (event.key === "ArrowDown") {
+        for (let col = 0; col < BOARD_SIZE; col++) {
+            let column = board.map(row => row[col]);
+            column = handleDirectionMove(column, true);
+
+            for (let row = 0; row < BOARD_SIZE; row++) {
+                board[row][col] = column[row];
+            }
+        }
+    } else if (event.key === "ArrowRight") {
+        for (let row = 0; row < BOARD_SIZE; row++) {
+            board[row] = handleDirectionMove(board[row], true);
+        }
+    } else if (event.key === "ArrowLeft") {
+        for (let row = 0; row < BOARD_SIZE; row++) {
+            board[row] = handleDirectionMove(board[row], false);
+        }
+    }
+}
 
 /*----------- Event Listeners ----------*/
 // const keyDown = document.addEventListener('keydown', handleKeyDown);
