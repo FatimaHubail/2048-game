@@ -92,8 +92,9 @@ const slideMerge = (line) => {
     let merged = [];
     for (let i = 0; i < filteredFromNull.length; i++) {
         if (i < filteredFromNull.length -1 && filteredFromNull[i] === filteredFromNull[i + 1]) {
-            const newValue = merged.push(filteredFromNull[i] * 2);
-            currentScore += newValue;
+            const mergedValue = filteredFromNull[i] * 2;
+            merged.push(mergedValue);
+            currentScore += mergedValue;
             if (currentScore > bestScore) {
                 bestScore = currentScore;
             }
@@ -121,9 +122,21 @@ const handleDirectionMove = (line, needsReverse) => {
     return slideMerge(line);
 };
 
+const boardsAreEqual = (boardA, boardB) => {
+    for (let row = 0; row < BOARD_SIZE; row++){
+        for (let col = 0; col < BOARD_SIZE; col++){
+            if (boardA[row][col] !== boardB[row][col]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 const handleKeyDown = (event) => {
     event.preventDefault();
-    
+    const boardBeforeMove = structuredClone(board);
+
     if (event.key === "ArrowUp") {
         for (let col = 0; col < BOARD_SIZE; col++){
             let column = board.map(row => row[col]);
@@ -151,20 +164,26 @@ const handleKeyDown = (event) => {
             board[row] = handleDirectionMove(board[row], false);
         }
     }
+
+    const boardAfterMove = board;
+    const identical = boardsAreEqual(boardBeforeMove, boardAfterMove);
+    if (!identical) {
+        randomTile();
+        render();
+    }
 }
 
 /*----------- Event Listeners ----------*/
-// const keyDown = document.addEventListener('keydown', handleKeyDown);
+document.addEventListener('keydown', handleKeyDown);
 // const btnClick = newGameBtnEl.addEventListener('click', handleNewGame);
 
-// buildBoardCells();
-// init();  
-// render(); 
+buildBoardCells();
+init();  
+render(); 
 // board = [
 //     [2, 2, 2, 2],
 //     [null, null, null, null],
 //     [null, null, null, null],
 //     [null, null, null, null]
 // ];
-// moveRightDown();
 // console.table(board)
