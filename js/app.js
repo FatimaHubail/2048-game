@@ -107,11 +107,21 @@ const slideMerge = (line) => {
     return merged;
 }
 
-const moveLeft = () => {
-    let leftMerge;
+const moveLeftUp = () => {
+    let merged;
     board.forEach((row, rowIdx) => {
-        leftMerge = slideMerge(row);
-        board[rowIdx] = leftMerge;
+        merged = slideMerge(row);
+        board[rowIdx] = merged;
+    })
+}
+
+const moveRightDown = () => {
+    let merged;
+    let reversed;
+    board.forEach((row, rowIdx) => {
+        reversed = row.toReversed();
+        merged = slideMerge(reversed);
+        board[rowIdx] = merged.reverse();
     })
 }
 
@@ -121,5 +131,13 @@ const moveLeft = () => {
 // const btnClick = newGameBtnEl.addEventListener('click', handleNewGame);
 
 // buildBoardCells();
-// init();     
-// render();
+// init();  
+// render(); 
+// board = [
+//     [2, 2, 2, 2],
+//     [null, null, null, null],
+//     [null, null, null, null],
+//     [null, null, null, null]
+// ];
+// moveRightDown();
+// console.table(board)
