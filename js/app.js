@@ -5,15 +5,15 @@ const WIN_TILE = 2048;
 /*---------- Variables (state) ---------*/
 let board; 
 let currentScore;
-let bestScore;
+let bestScore = 0;
 let gameOver;
 let hasWon;
 let cellElements;
 
 /*----- Cached Element References  -----*/
 const boardEl = document.querySelector('#board');
-const scoreEl = document.querySelector('#score');
-const bestScoreEl = document.querySelector('#best-score');
+const scoreEl = document.querySelector('#score-value');
+const bestScoreEl = document.querySelector('#best-value');
 const msgEl = document.querySelector('.msg-area');
 const newGameBtnEl = document.querySelector('#new-game');
 
@@ -60,6 +60,7 @@ const buildBoardCells = () => { // function to build the cells of the boards (16
             const cellDiv = document.createElement('div');
             cellDiv.classList.add('cell');
             boardEl.appendChild(cellDiv);
+            rowEls.push(cellDiv);
         }
         cellElements.push(rowEls);
     }
@@ -84,7 +85,29 @@ const render = () => { // updates cells with new values alongside their referenc
     bestScoreEl.textContent = bestScore;
 }
 
+const slideMerge = (line) => {
+    let filteredFromNull = line.filter(value => value!== null);
+    // extract the cells that has values within the row/col
+
+    let merged = [];
+    for (let i = 0; i < filteredFromNull.length; i++) {
+        if (i < filteredFromNull.length -1 && filteredFromNull[i] === filteredFromNull[i + 1]) {
+            merged.push(filteredFromNull[i] * 2);
+            i++; // skip the next value since it was just consumed by the merge
+            // merges and doubles value of identical adjacents  
+        } else {
+            merged.push(filteredFromNull[i]);
+            // not identical adjacents case
+        }
+    }
+
+    while (merged.length < 4) {
+        merged.push(null);
+    } // fill the remainder of the array with nulls
+    return merged;
+}
+
 
 /*----------- Event Listeners ----------*/
-const keyDown = newGameBtnEl.addEventListener('keydown', handleKeyDown);
-const btnClick = document.addEventListener('click', handleNewGame);
+const keyDown = document.addEventListener('keydown', handleKeyDown);
+const btnClick = newGameBtnEl.addEventListener('click', handleNewGame);
