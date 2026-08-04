@@ -75,9 +75,11 @@ const render = () => { // updates cells with new values alongside their referenc
             if (value === null) {
                 cellDiv.textContent = '';
                 cellDiv.classList.add('hide');
+                delete cellDiv.dataset.value;
             } else {
                 cellDiv.textContent = value;
                 cellDiv.classList.remove('hide');
+                delete cellDiv.dataset.value;
             }
         }
     }
