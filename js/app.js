@@ -98,6 +98,9 @@ const slideMerge = (line) => {
             if (currentScore > bestScore) {
                 bestScore = currentScore;
             }
+            if (mergedValue === WIN_TILE) {
+                hasWon = true;
+            }
             i++; // skip the next value since it was just consumed by the merge
             // merges and doubles value of identical adjacents  
         } else {
@@ -133,8 +136,35 @@ const boardsAreEqual = (boardA, boardB) => {
     return true;
 }
 
+const isGameOver = () => {
+    for (let row = 0; row < BOARD_SIZE; row++){
+        for (let col = 0; col < BOARD_SIZE; col++){
+            if (board[row][col] === null) {
+                return false;
+            }
+        }
+    }
+
+    for (let row = 0; row < BOARD_SIZE; row++) {
+        for (let col = 0; col < BOARD_SIZE; col++) {
+            if (col !== BOARD_SIZE - 1 && board[row][col] === board[row][col + 1]) {
+                return false;
+            } else if (row !== BOARD_SIZE - 1 && board[row][col] === board[row + 1][col]) {
+                return false;
+            }
+        }
+    }
+    gameOver = true;
+    return true;
+}
+
 const handleKeyDown = (event) => {
     event.preventDefault();
+
+    if (gameOver || hasWon) {
+        return;
+    }
+
     const boardBeforeMove = structuredClone(board);
 
     if (event.key === "ArrowUp") {
@@ -169,7 +199,16 @@ const handleKeyDown = (event) => {
     const identical = boardsAreEqual(boardBeforeMove, boardAfterMove);
     if (!identical) {
         randomTile();
-        render();
+        
+    }
+    render();
+
+    if (hasWon) {
+        msgEl.textContent = "Congrats! You win!";
+    }
+
+    if (isGameOver()) {
+        msgEl.textContent = "Game Over! You are out of Moves!";
     }
 }
 
@@ -180,10 +219,11 @@ document.addEventListener('keydown', handleKeyDown);
 buildBoardCells();
 init();  
 render(); 
-// board = [
-//     [2, 2, 2, 2],
-//     [null, null, null, null],
-//     [null, null, null, null],
-//     [null, null, null, null]
-// ];
+board = [
+    [2, 4, 8, 16],
+    [4, 8, 6, 2],
+    [8, 16, 6, 4],
+    [16, 2, 4, 8]
+];
+console.log(isGameOver()); // expect false — the two 6s stacked vertically in the middle
 // console.table(board)
