@@ -212,18 +212,16 @@ const handleKeyDown = (event) => {
     }
 }
 
+const handleNewGame = () => {
+    init();
+    render();
+    msgEl.textContent = '';
+}
+
 /*----------- Event Listeners ----------*/
 document.addEventListener('keydown', handleKeyDown);
-// const btnClick = newGameBtnEl.addEventListener('click', handleNewGame);
+newGameBtnEl.addEventListener('click', handleNewGame);
 
 buildBoardCells();
 init();  
 render(); 
-board = [
-    [2, 4, 8, 16],
-    [4, 8, 6, 2],
-    [8, 16, 6, 4],
-    [16, 2, 4, 8]
-];
-console.log(isGameOver()); // expect false — the two 6s stacked vertically in the middle
-// console.table(board)
