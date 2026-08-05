@@ -79,7 +79,10 @@ const render = () => { // updates cells with new values alongside their referenc
             } else {
                 cellDiv.textContent = value;
                 cellDiv.classList.remove('hide');
-                delete cellDiv.dataset.value;
+                cellDiv.dataset.value = value;
+                cellDiv.classList.remove('pop');
+                void cellDiv.offsetWidth; // forces the browser to "restart" the animation
+                cellDiv.classList.add('pop');
             }
         }
     }

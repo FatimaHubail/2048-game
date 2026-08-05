@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 /* color variables */
 :root {
     --page-bg:  #fff4e0;
@@ -12,7 +13,8 @@
 /* page setup */
 body {
     background: var(--page-bg);
-    font-family: Verdana, sans-serif;
+    font-family: "Nunito", sans-serif;
+    font-weight: bolder;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,6 +31,7 @@ body > div {
 h1 { 
     text-align: center;
     font-size: 34px;
+    font-weight: bolder;
     color: var(--accent-pink);
     /* shadow for sticker outline */
     text-shadow: 2px 2px 0 #fff, 4px 4px rgba(0,0,0,0.1);
@@ -50,7 +53,7 @@ h1 {
     text-align: center;
     min-width: 80px;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: bolder;
     color: var(--text-dark);
     /* shadow for raised card look */
     box-shadow: 0 3px 0 rgba(0,0,0,0.08);
@@ -59,7 +62,7 @@ h1 {
 #score-value, #best-value{
     display: block;
     font-size: 13px;
-    font-weight: bold;
+    font-weight: bolder;
     color: var(--accent-green);
 }
 
@@ -67,7 +70,7 @@ h1 {
 .msg-area{
     text-align: center;
     font-size: 13px;
-    font-weight: bold;
+    font-weight: bolder;
     color: var(--accent-green);
     min-height: 18px;
     /* reserves space so layout doesn't jump when a message appears */
@@ -96,7 +99,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
+    font-weight: bolder;
     font-size: 20px;
     color: #fff;
     background: var(--empty-cell);
@@ -108,24 +111,285 @@ h1 {
 }
 
 /* per-value tile color  */
-.cell[dat-value ="2"] {background: #f0997b;box-shadow: 0 3px 0 #c4638a;}
-.cell[dat-value="2"] {
+.cell[data-value="2"] {
     background: #f0997b;
+    box-shadow: 0 3px 0 #c96b4f;
+}
+
+.cell[data-value="4"] {
+    background: #ed93b1;
     box-shadow: 0 3px 0 #c4638a;
 }
-.cell[dat-value="2"] {
-    background: #f0997b;
-    box-shadow: 0 3px 0 #c4638a;
+
+.cell[data-value="8"] {
+    background: #fac775;
+    color: #5a3d02;
+    box-shadow: 0 3px 0 #d1a04f;
 }
-.cell[dat-value="2"] {
-    background: #f0997b;
-    box-shadow: 0 3px 0 #c4638a;
+
+.cell[data-value="16"] {
+    background: #97c459;
+    color: #25400c;
+    box-shadow: 0 3px 0 #6f9a34;
 }
-.cell[dat-value="2"] {
-    background: #f0997b;
-    box-shadow: 0 3px 0 #c4638a;
+
+.cell[data-value="32"] {
+    background: #5dcaa5;
+    color: #0a4535;
+    box-shadow: 0 3px 0 #349e7a;
 }
-.cell[dat-value="2"] {
-    background: #f0997b;
-    box-shadow: 0 3px 0 #c4638a;
+
+.cell[data-value="64"] {
+    background: #85b7eb;
+    color: #0c447c;
+    box-shadow: 0 3px 0 #4f8fc9;
+    font-size: 19px;
 }
+
+.cell[data-value="128"] {
+    background: #af9bec;
+    color: #2e2461;
+    box-shadow: 0 3px 0 #7f77dd;
+    font-size: 17px;
+}
+
+.cell[data-value="256"] {
+    background: #d85a30;
+    box-shadow: 0 3px 0 #a83f1e;
+    font-size: 16px;
+}
+
+.cell[data-value="512"] {
+    background: #b13c1d;
+    box-shadow: 0 3px 0 #802912;
+    font-size: 16px;
+}
+
+.cell[data-value="1024"] {
+    background: #7a2a12;
+    box-shadow: 0 3px 0 #501b0b;
+    font-size: 14px;
+}
+
+.cell[data-value="2048"] {
+    background: #2c2c2a;
+    box-shadow: 0 3px 0 #000;
+    font-size: 14px;
+}
+
+/* new game button */
+#new-game { 
+    display: block;
+    margin: 40px auto 0;
+    background: var(--accent-pink);
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: 11px 26px;
+    font-weight: bolder;
+    font-family: "Nunito", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--accent-pink-dark);
+    transition: transform 0.05s ease;
+}
+
+#new-game:hover {
+    background: #c94570;
+}
+
+#new-game:active {
+    box-shadow: 0 1px 0 var(--accent-pink-dark);
+    transform: translateY(3px);
+}
+
+#new-game:focus {
+    outline: none;
+}
+
+p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bolder;
+    color: var(--accent-green);
+    /* background: #fff; */
+    border-radius: 14px;
+    padding: 10px 16px;
+    margin: 20px auto 0;
+    max-width: 300px;
+    line-height: 1.75;
+    /* box-shadow: 0 3px 0 rgba(0,0,0,0.08); */
+}
+
+@keyframes tile-pop {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+
+    60% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.cell.pop {
+    animation: tile-pop 0.15s ease-out;
+}
+
+/* ---------- Responsive: tablets ---------- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    .cell {
+        font-size: 18px;
+    }
+
+    #score-value,
+    #best-value {
+        font-size: 17px;
+    }
+}
+
+/* ---------- Responsive: phones ---------- */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 26px;
+    }
+
+    .cell {
+        font-size: 16px;
+    }
+
+    #score-value,
+    #best-value {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+}
+
+/* dark mode design settings based on user's system preference' */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #1e1a1f;
+    }
+
+    #score,
+    #best-score {
+        background: #2c2530;
+        box-shadow: 0 3px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    #score-value,
+    #best-value {
+        color: #f0e6da;
+    }
+
+    #score,
+    #best-score {
+        color: #9ecf7a;
+    }
+
+    h1 {
+        text-shadow: 2px 2px 0 #000, 4px 4px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    #board {
+        background: #141014;
+    }
+
+    .cell,
+    .cell.hide {
+        background: #2c2530;
+    }
+
+    .cell[data-value="2"] {
+        background: #c96b4f;
+        color: #fff0e8;
+        box-shadow: 0 3px 0 #8a4531;
+    }
+
+    .cell[data-value="4"] {
+        background: #c4638a;
+        color: #fff0f4;
+        box-shadow: 0 3px 0 #8a4360;
+    }
+
+    .cell[data-value="8"] {
+        background: #d1a04f;
+        color: #3d2900;
+        box-shadow: 0 3px 0 #8f6c2e;
+    }
+
+    .cell[data-value="16"] {
+        background: #6f9a34;
+        color: #eaffd6;
+        box-shadow: 0 3px 0 #48661f;
+    }
+
+    .cell[data-value="32"] {
+        background: #349e7a;
+        color: #e6fff6;
+        box-shadow: 0 3px 0 #1f6650;
+    }
+
+    .cell[data-value="64"] {
+        background: #4f8fc9;
+        color: #eaf5ff;
+        box-shadow: 0 3px 0 #2e5c85;
+    }
+
+    .cell[data-value="128"] {
+        background: #7f77dd;
+        color: #f4f2ff;
+        box-shadow: 0 3px 0 #4f4996;
+    }
+
+    .cell[data-value="256"] {
+        background: #a83f1e;
+        color: #ffe9dd;
+        box-shadow: 0 3px 0 #6e2811;
+    }
+
+    .cell[data-value="512"] {
+        background: #8a2f14;
+        color: #ffe4d6;
+        box-shadow: 0 3px 0 #591d0c;
+    }
+
+    .cell[data-value="1024"] {
+        background: #5c200d;
+        color: #ffdccb;
+        box-shadow: 0 3px 0 #3a1408;
+    }
+
+    .cell[data-value="2048"] {
+        background: #f0e6da;
+        color: #1e1a1f;
+        box-shadow: 0 3px 0 #b0a695;
+    }
+
+    #new-game {
+        background: #f0799e;
+        color: #2c1620;
+        box-shadow: 0 4px 0 #a3506b;
+    }
+
+    #new-game:hover {
+        background: #e0698e;
+    }
+
+    p {
+        color: #9ecf7a;
+    }
+}
+
