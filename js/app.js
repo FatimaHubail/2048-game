@@ -14,8 +14,11 @@ let cellElements;
 const boardEl = document.querySelector('#board');
 const scoreEl = document.querySelector('#score-value');
 const bestScoreEl = document.querySelector('#best-value');
-const msgEl = document.querySelector('.msg-area');
 const newGameBtnEl = document.querySelector('#new-game');
+const modalOverlayEl = document.querySelector('#modal-overlay');
+const modalTextEl = document.querySelector('#modal-text');
+const modalCloseEl = document.querySelector('#modal-close');
+const modalRestartEl = document.querySelector('#modal-restart');
 
 /*-------------- Functions -------------*/
 const randomTile = () => { // fills random empty cell within the board with random number between 2 or 4
@@ -163,6 +166,15 @@ const isGameOver = () => {
     return true;
 }
 
+const showModal = (text) => {
+    modalTextEl.textContent = text;
+    modalOverlayEl.classList.remove('hide');
+};
+
+const hideModal = () => {
+    modalOverlayEl.classList.add('hide');
+};
+
 const handleKeyDown = (event) => {
     event.preventDefault();
 
@@ -200,8 +212,7 @@ const handleKeyDown = (event) => {
         }
     }
 
-    const boardAfterMove = board;
-    const identical = boardsAreEqual(boardBeforeMove, boardAfterMove);
+    const identical = boardsAreEqual(boardBeforeMove, board);
     if (!identical) {
         randomTile();
         
@@ -209,23 +220,23 @@ const handleKeyDown = (event) => {
     render();
 
     if (hasWon) {
-        msgEl.textContent = "Congrats! You win!";
-    }
-
-    if (isGameOver()) {
-        msgEl.textContent = "Game Over! You are out of Moves!";
+        showModal("Congrats! You win!");
+    }else if (isGameOver()) {
+        showModal("Game Over! You are out of Moves!");
     }
 }
 
 const handleNewGame = () => {
+    hideModal();
     init();
     render();
-    msgEl.textContent = '';
 }
 
 /*----------- Event Listeners ----------*/
 document.addEventListener('keydown', handleKeyDown);
 newGameBtnEl.addEventListener('click', handleNewGame);
+modalRestartEl.addEventListener('click', handleNewGame);
+modalCloseEl.addEventListener('click', hideModal);
 
 buildBoardCells();
 init();  
