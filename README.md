@@ -14,29 +14,35 @@ The goal is simple: combine matching tiles to create higher numbers and reach th
 
 ## Screenshots
 
-<img src="assets/2048-dark.png" alt="2048 Game Screenshot" width="400">
+<p align="center">
+  <img src="assets/2048-dark.png" alt="2048 Game Screenshot" width="400"><br>
+  <em>Dark mode board mid-game, showing merged tiles and the score panel.</em>
+</p>
 
-*Dark mode board mid-game, showing merged tiles and the score panel.*
+<p align="center">
+  <img src="assets/2048-light.png" alt="2048 Game Screenshot" width="400"><br>
+  <em>Light mode board mid-game.</em>
+</p>
 
-<img src="assets/2048-light.png" alt="2048 Game Screenshot" width="400">
+<p align="center">
+  <img src="assets/win.png" alt="2048 Game Screenshot" width="400"><br>
+  <em>The board after reaching the 2048 tile — the win condition triggers as soon as a merge produces this value.</em>
+</p>
 
-*Light mode board mid-game.*
+<p align="center">
+  <img src="assets/winmsg.png" alt="2048 Game Screenshot" width="400"><br>
+  <em>The win popup, shown immediately after the 2048 tile is created, with an option to close it or start a new game.</em>
+</p>
 
-<img src="assets/win.png" alt="2048 Game Screenshot" width="400">
+<p align="center">
+  <img src="assets/lose.png" alt="2048 Game Screenshot" width="400"><br>
+  <em>A full board with no matching adjacent tiles in any direction and no legal moves remain, triggering the game-over state.</em>
+</p>
 
-*The board after reaching the 2048 tile — the win condition triggers as soon as a merge produces this value.*
-
-<img src="assets/winmsg.png" alt="2048 Game Screenshot" width="400">
-
-*The win popup, shown immediately after the 2048 tile is created, with an option to close it or start a new game.*
-
-<img src="assets/lose.png" alt="2048 Game Screenshot" width="400">
-
-*A full board with no matching adjacent tiles in any direction and no legal moves remain, triggering the game-over state.*
-
-<img src="assets/losemsg.png" alt="2048 Game Screenshot" width="400">
-
-*The game-over popup, shown once no more moves are possible, with an option to close it or restart.*
+<p align="center">
+  <img src="assets/losemsg.png" alt="2048 Game Screenshot" width="400"><br>
+  <em>The game-over popup, shown once no more moves are possible, with an option to close it or restart.</em>
+</p>
 
 ---
 
