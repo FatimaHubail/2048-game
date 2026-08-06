@@ -245,6 +245,17 @@ This prevents unwanted tile generation when the player presses a direction that 
 │
 └── README.md
 ```
+---
+
+# Future Improvements
+
+Possible future additions I would like to add:
+
+- Game continues even after reaching the 2048 tile (same as the original game)
+- Achievement celebration animation
+- Sound effects
+- Undo last move feature
+- Save progress using Local Storage
 
 ---
 
