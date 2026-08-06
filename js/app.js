@@ -42,16 +42,17 @@ const randomTile = () => { // fills random empty cell within the board with rand
 
 const init = () => {
     board = [
-        [null, null, null, null],
-        [null, null, null, null],
-        [null, null, null, null],
-        [null, null, null, null],
+        [1024, 1024, null, 4],
+        [8, 16, 32, 64],
+        [128, 256, 512, 2],
+        [4, 8, 16, 32],
+        
     ]; // 2D array for board cells
     currentScore = 0; 
     gameOver = false;
     hasWon = false;
-    randomTile();
-    randomTile(); 
+    // randomTile();
+    // randomTile(); 
     // generate 2 random cells
 }
 

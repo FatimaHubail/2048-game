@@ -8,15 +8,29 @@ The goal is simple: combine matching tiles to create higher numbers and reach th
 
 ## Live Demo
 
-🔗 [Play the Game](#)
+🔗 [Play the Game](https://FatimaHubail.github.io/2048-game/)
 
 ---
 
 ## Screenshots
 
-```
-![2048 Game Screenshot](assets/screenshot.png)
-```
+![2048 Game Screenshot](assets/2048-dark.png)
+*Dark mode board mid-game, showing merged tiles and the score panel.*
+
+![2048 Game Screenshot](assets/2048-light.png)
+*Light mode board mid-game.*
+
+![2048 Game Screenshot](assets/win.png)
+*The board after reaching the 2048 tile — the win condition triggers as soon as a merge produces this value.*
+
+![2048 Game Screenshot](assets/winmsg.png)
+*The win popup, shown immediately after the 2048 tile is created, with an option to close it or start a new game.*
+
+![2048 Game Screenshot](assets/lose.png)
+*A full board with no matching adjacent tiles in any direction and no legal moves remain, triggering the game-over state.*
+
+![2048 Game Screenshot](assets/losemsg.png)
+*The game-over popup, shown once no more moves are possible, with an option to close it or restart.*
 
 ---
 
