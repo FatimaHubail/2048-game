@@ -14,22 +14,28 @@ The goal is simple: combine matching tiles to create higher numbers and reach th
 
 ## Screenshots
 
-![2048 Game Screenshot](assets/2048-dark.png)
+<img src="assets/2048-dark.png" alt="2048 Game Screenshot" width="400">
+
 *Dark mode board mid-game, showing merged tiles and the score panel.*
 
-![2048 Game Screenshot](assets/2048-light.png)
+<img src="assets/2048-light.png" alt="2048 Game Screenshot" width="400">
+
 *Light mode board mid-game.*
 
-![2048 Game Screenshot](assets/win.png)
+<img src="assets/win.png" alt="2048 Game Screenshot" width="400">
+
 *The board after reaching the 2048 tile — the win condition triggers as soon as a merge produces this value.*
 
-![2048 Game Screenshot](assets/winmsg.png)
+<img src="assets/winmsg.png" alt="2048 Game Screenshot" width="400">
+
 *The win popup, shown immediately after the 2048 tile is created, with an option to close it or start a new game.*
 
-![2048 Game Screenshot](assets/lose.png)
+<img src="assets/lose.png" alt="2048 Game Screenshot" width="400">
+
 *A full board with no matching adjacent tiles in any direction and no legal moves remain, triggering the game-over state.*
 
-![2048 Game Screenshot](assets/losemsg.png)
+<img src="assets/losemsg.png" alt="2048 Game Screenshot" width="400">
+
 *The game-over popup, shown once no more moves are possible, with an option to close it or restart.*
 
 ---
